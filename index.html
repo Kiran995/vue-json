@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Vue JS</title>
+		<link href="style.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+		<style>
+		#rect{
+			border: 1px solid black;
+			width:300px;
+			height:300px;
+			text-align: center;
+			padding: 100px;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{greet(93)}}</h1>
+			<h1>{{ name }}</h1>
+			<a v-bind:href="web">click here</a>
+			<input type="text" v-model="name" v-on:keyup="logText">
+			<span>{{ name }}</span>
+			<p v-html="webTag"></p>
+			<p> Year is {{year}}</p>
+			<button v-on:click.once="add(2)">Add year</button>
+			<button v-on:click="multiply(2)">get leap year</button>
+			<button v-on:dblclick="add(11)">get leap year</button>
+			<button v-on:dblclick="multiply(11)">get leap year</button>
+			<div id="rect" v-on:mousemove="update">
+				{{x}}, {{y}}
+			</div>
+			<p><h1> Loop through list</h1></p>
+			<ul>
+				<li v-for="(character, index) in characters">
+					{{index}} {{ character }}
+			</ul>
+			<p><h1> Loop through objects</h1></p>
+			<ul>
+				<li v-for="ninja in ninjas">
+					{{ninja.name}} {{ninja.age}}
+				</li>
+			</ul>
+			<template v-for="ninja in ninjas">
+				<div v-for="(val, key) in ninja">
+					{{ key }} - {{ val }}
+				</div>
+			</template>
+		</div>
+
+		<script src="index.js"></script>
+
+	</body>
+</html>

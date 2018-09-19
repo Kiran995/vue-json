@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+  <!-- <script src="/path/to/howler.js"></script> -->
+  <title>Vue.js load data with JSON</title>
+</head>
+<body>
+  <div id='app'>
+      <ul v-for='item in items'>
+        <input type="text" v-bind:value="item.name"/>
+        <input type="number" v-bind:value="item.age"/>
+        <input type="text" v-bind:value="item.music.split('/audio/')[1]"/>
+        <button class="btn btn-primary" @click.prevent="playAudio(item.music)">play songs</button>
+      <ul><!--  -->
+  </div>
+</body>
+
+<script>
+	Vue.component('data-list', {
+      template:"#app",
+      props:['items']
+    })
+
+    new Vue({
+      el: "#app",
+      data: {
+        active : true,
+        items :[],
+        audio: null
+      },
+      components :{
+
+      },
+
+      mounted () {
+        $.getJSON('https://api.myjson.com/bins/nf84c', json => {
+          this.items = json.data
+          console.log(json.data)
+        })
+      },
+      methods:{
+        playAudio:function(music) {
+          if(music){
+            var audio = new Audio(music);
+            audio.play();
+          }
+    		}
+      }
+		})
+</script>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Kiran",
+      "age": "23",
+      "music": "/audio/music.mp3"
+    },
+    {
+      "id": 2,
+      "name": "Prajapati",
+      "age": "36",
+      "music": "/audio/music.mp3"
+    }
+  ]
+}
